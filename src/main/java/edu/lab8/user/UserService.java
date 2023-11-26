@@ -1,5 +1,6 @@
-package ua.edu.ucu.apps.flowerstore.user;
+package edu.lab8.user;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,9 +12,16 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    private void addUser(AppUser user) {
-        if (!userRepository.findAppUserByEmail(user.getEmail()).isPresent()) {
+    void addUser(User user) {
+        if (!userRepository.findAppUserByEmail(((AppUser) user).getEmail()).isPresent()) {
             userRepository.save(user);
+        }
+    }
+
+    void deleteUser(Integer id) {
+        boolean exists = userRepository.existsById(id);
+        if (exists) {
+            userRepository.deleteById(id);
         }
     }
 }

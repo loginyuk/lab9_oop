@@ -1,4 +1,4 @@
-package ua.edu.ucu.apps.flowerstore.user;
+package edu.lab8.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +19,8 @@ public class AppUser {
     private int id;
     @Column(unique = true)
     private String email;
-    private LocalDate dob;
     @Transient
+    private LocalDate dob;
     private int age;
 
     public int getAge() {

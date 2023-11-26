@@ -1,4 +1,4 @@
-package ua.edu.ucu.apps.flowerstore.user;
+package edu.lab8.user;
 
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,10 @@ public class UserController {
 
     @PostMapping
     public void addUser(@RequestBody User user) {
-
+        userService.addUser(user);
+    }
+    @PostMapping
+    private void deleteUser(Integer id) {
+        userService.deleteUser(id);
     }
 }
